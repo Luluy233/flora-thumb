@@ -1,7 +1,7 @@
 <template>
   <el-descriptions :column="1" class="extern-desc">
       
-      <el-descriptions-item>
+      <el-descriptions-item v-if="data.xgsc !== ''">
         <template #label>
           <div class="cell-item">
             相关诗词
@@ -10,7 +10,7 @@
         {{data.xgsc}}
       </el-descriptions-item>
 
-      <el-descriptions-item>
+      <el-descriptions-item v-if="data.jzgy !== ''">
         <template #label>
           <div class="cell-item">
             植物功用
@@ -28,7 +28,7 @@
         {{data.hyyy}}
       </el-descriptions-item>    
 
-      <el-descriptions-item>
+      <el-descriptions-item v-if="data.fbdq !== ''">
         <template #label>
           <div class="cell-item">
             分布地区
@@ -46,7 +46,7 @@
         {{data.mcll}}
       </el-descriptions-item>
 
-      <el-descriptions-item>
+      <el-descriptions-item v-if="data.yhjs !== ''">
         <template #label>
           <div class="cell-item">
             养护技术
@@ -55,7 +55,7 @@
         {{data.yhjs}}
       </el-descriptions-item>
 
-      <el-descriptions-item>
+      <el-descriptions-item v-if="data.bxtz !== ''">
         <template #label>
           <div class="cell-item">
             表型特征
@@ -64,7 +64,7 @@
         {{data.bxtz}}
       </el-descriptions-item>
 
-      <el-descriptions-item>
+      <el-descriptions-item v-if="data.hksj !== ''">
         <template #label>
           <div class="cell-item">
             花开时节

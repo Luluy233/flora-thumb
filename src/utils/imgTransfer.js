@@ -13,8 +13,8 @@ export function toBase64(formData) {
       reader.readAsDataURL(file);
   
       reader.onload = () => {
-        // const base64String = reader.result.split(',')[1];//不带前缀
-        const base64String = reader.result;//带前缀
+        const base64String = reader.result.split(',')[1];//不带前缀
+        // const base64String = reader.result;//带前缀
         resolve(base64String);
       };
   

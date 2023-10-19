@@ -1,11 +1,18 @@
 import request from '@/utils/request';
 
+var APP_CODE = "793c0cb766bb4f08b81921642c566c8f";
+
 // 植物识别
 export function recognizePlants(data) {
     return request({
         url: "https://mock.apifox.cn/m1/3426981-0-default/api/Identify/",
+        // url:"http://plantgw.nongbangzhu.cn/plant/recognize2",
         method: "POST",
-        data:data,
+        data: data,
+        headers: {
+            'Content-Type': 'application/x-www-form-urlencoded',
+            'Authorization': 'APPCODE ' + APP_CODE
+        },
     })
 }
 
@@ -13,8 +20,13 @@ export function recognizePlants(data) {
 export function getPlantsInfo(data){
     return request({
         url:"https://mock.apifox.cn/m1/3426981-0-default/api/plant/info/",
+        // url:"http://plantgw.nongbangzhu.cn/plant/info",
         method:"POST",
         data:data,
+        headers: {
+            'Content-Type': 'application/x-www-form-urlencoded',
+            'Authorization': 'APPCODE ' + APP_CODE
+        },
     })
 }
 
