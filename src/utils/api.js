@@ -21,10 +21,11 @@ export function getPlantsInfo(data){
 
 // 获取植物花语箴言
 export function getFlower(data){
+    // const url = "https://apis.tianapi.com/huayu/index?key=c26c489368e72c25e4d47e9ea30650f8&word="+ data.value
+    const url = "https://apis.tianapi.com/huayu/index?key=c26c489368e72c25e4d46e9ea30650f8&word="+ data.value
     return request({
-        url:"https://apis.tianapi.com/huayu/index",
+        url,
         method:"GET",
-        data:data,
     })
 }
 

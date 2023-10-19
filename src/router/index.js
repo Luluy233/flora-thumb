@@ -1,7 +1,7 @@
 import { createRouter, createWebHashHistory } from 'vue-router';
 import HomeView from "@/views/HomeView"
 import SearchView from "@/views/SearchView"
-import DetailView from "@/views/DetailView"
+import IdentifylView from "@/views/IdentifyView"
 
   const routes =
     [
@@ -16,9 +16,9 @@ import DetailView from "@/views/DetailView"
         component: SearchView,
       },
       {
-        path: '/detail',
-        name: 'detail',
-        component: DetailView,
+        path: '/identify',
+        name: 'identify',
+        component: IdentifylView,
       }
     ]
 

@@ -14,9 +14,8 @@
     </el-menu-item>
 
     <div class="flex-grow" />
-    <el-menu-item index="search" style="width:150px">搜索</el-menu-item>
+    <el-menu-item index="search" style="width:150px">专业搜索</el-menu-item>
     <el-menu-item index="identify" style="width:150px">识别</el-menu-item>
-
   </el-menu>
 
 </template>
@@ -31,10 +30,10 @@
     router.push('/');
   } 
   else if( key === 'search'){
-    //
+    router.push('/search');
   }
   else if ( key === 'identify'){
-    //
+    router.push('/identify')
   }
 }
 </script>
