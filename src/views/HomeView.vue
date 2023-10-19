@@ -2,15 +2,28 @@
     <div class="banner">
         <HomeBanner />
     </div>
-    <div class="identify-wrapper center">
-        <IdentifyCard />
+    <div class="identify-wrapper center" >
+        <IdentifyCard :data="resultInfo" @identify="identifyPlants"/>
+    </div>
+    <div class="center" v-if="showResult">
+        <ResultCard :data="resultInfo"/>
     </div>
 </template>
 
 <script setup>
     import HomeBanner from '@/components/home/HomeBanner'
     import IdentifyCard from '@/components/home/IdentifyCard'
-    // import { ElRow } from 'element-plus'
+    import ResultCard from '@/components/home/ResultCard'
+    import { ref } from 'vue'
+
+    const resultInfo = ref();  //识别结果
+    const showResult = ref(false);
+
+    const identifyPlants = (val) =>{
+        resultInfo.value = val.content;
+        console.log('this is  home', resultInfo.value);
+        showResult.value = true;
+    }
     
 </script>
 

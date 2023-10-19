@@ -2,7 +2,7 @@
     <div class="identify-zone center">
         <div class="title">上传图片识别</div>
         <div>
-            <ImgUpload ref="ImgUploadRef" @uploadPicture = "identifyPlants"/>
+            <ImgUpload ref="ImgUploadRef" @uploadPicture = "identify"/>
         </div>
     </div>
 </template>
@@ -10,14 +10,20 @@
 
 <script setup>
     import { ref } from 'vue'
+    import { defineEmits } from 'vue'
     import { ElMessage } from 'element-plus'
     import ImgUpload from '@/components/common/ImgUpload.vue'
     import { recognizePlants } from '@/utils/api.js'
     import { toBase64 } from '@/utils/imgTransfer.js'
 
-    const ImgUploadRef = ref(null);
 
-    const identifyPlants = (val) =>{
+    const ImgUploadRef = ref(null); 
+
+    //使用defineEmits创建名称，接受一个数组
+    const emit = defineEmits(['identify'])//触发的方法名clickChild
+
+
+    const identify = (val) =>{
         const formData = new FormData();
         formData.append('picture',val.fileList[0].raw);
 
@@ -32,7 +38,12 @@
                 ImgUploadRef.value.$refs.uploadRef.clearFiles();
                 console.log(resp);
 
-                // 显示对应结果
+                // 传结果给HomeView
+                let param ={
+                    content: resp  
+                }
+                //传递给父组件
+                emit('identify',param)
 
 
                 ElMessage.success('图片识别成功！')

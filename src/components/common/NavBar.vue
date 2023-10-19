@@ -4,7 +4,9 @@
     mode="horizontal" 
     :ellipsis="false" 
     @select="handleSelect"
-    style="background-color: transparent;">
+    background-color="rgb(187, 255, 218) transparent"
+    text-color="black"
+    active-text-color="rgb(31, 170, 96)">
 
     <!-- 首页/logo -->
     <el-menu-item index="home" class="logo">
@@ -28,6 +30,12 @@
   if (key === 'home') {
     router.push('/');
   } 
+  else if( key === 'search'){
+    //
+  }
+  else if ( key === 'identify'){
+    //
+  }
 }
 </script>
 
