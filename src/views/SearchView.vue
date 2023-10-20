@@ -33,6 +33,7 @@
     import { onMounted } from 'vue'
     import { ref, computed } from 'vue'
     import { useRoute } from "vue-router";
+    import { onBeforeRouteUpdate } from "vue-router";
     import { ElContainer, ElMain, ElRow, ElPagination } from 'element-plus'
     import ResultCard from '@/components/search/ResultCard.vue'
 
@@ -83,6 +84,17 @@
     const handleCurrentChange = () =>{
         getPage();
     }
+
+    onBeforeRouteUpdate((to, from) =>{
+        console.log(to);
+        if(to.query.key !== from.query.key){
+            key.value = to.query.key;
+            console.log(key.value);
+            currentPage.value = 1;
+            getPage();
+
+        }
+    });
 
 </script>
 
