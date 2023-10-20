@@ -33,8 +33,7 @@ export function getPlantsInfo(data){
 
 // 获取植物花语箴言
 export function getFlower(data){
-    // const url = "https://apis.tianapi.com/huayu/index?key=c26c489368e72c25e4d47e9ea30650f8&word="+ data.value
-    const url = "https://apis.tianapi.com/huayu/index?key=c26c489368e72c25e4d46e9ea30650f8&word="+ data.value
+    const url = "https://apis.tianapi.com/huayu/index?key=c26c489368e72c25e4d47e9ea30650f8&word="+ data.value
     return request({
         url,
         method:"GET",
@@ -42,4 +41,11 @@ export function getFlower(data){
 }
 
 // 植物搜索
+export function searchPlants(data){
+    return request({
+        url:"/api/v1/plants/search?token=m8ZN6xPH2t8xyrMsxFJfgUPb7fQz5tki-bf6GOzodgc" + "&q=" + data.key + 
+            "&page=" + data.page ,
+        method:"GET",
+    })
+}
 

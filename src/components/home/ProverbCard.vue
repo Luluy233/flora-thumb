@@ -52,6 +52,7 @@
     })
 
     const getProverb = () =>{
+        console.log(name.value);
         getFlower(name)
         .then(resp =>{
             console.log(resp);
@@ -76,7 +77,8 @@
         /* background-color: gainsboro; */
         /* height:70vh; */
         width:70vw;
-        margin-bottom:50px;
+        margin: 50px auto;
+
     }
     .center{
         display:flex;
