@@ -45,18 +45,14 @@
                 }
                 //传递给父组件
                 emit('identify',param)
-
-
                 ElMessage.success('图片识别成功！')
             })
-            .catch(err => {
-                console.log(err);
+            .catch(()=> {
                 ElMessage.error('图片识别失败，请重试！')
             }) 
         })
-        .catch((error) => {
-            console.log(error);
-            ElMessage.error('图片处理失败，请重试！');
+        .catch(() => {
+            ElMessage.error('图片编码失败，请重试！');
         });
     }
 </script>

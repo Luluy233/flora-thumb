@@ -77,7 +77,6 @@
 
 <script setup>
   import { defineProps } from 'vue'
-  import { onMounted } from 'vue'
 
   const props = defineProps({
         data: {
@@ -85,10 +84,8 @@
             required:true
         },
     })
-  
-    onMounted(()=>{
-      console.log("this is extern info",props.data)
-    })
+
+    props;
 
 </script>
 

@@ -49,3 +49,14 @@ export function searchPlants(data){
     })
 }
 
+// 获取物种信息
+export function getSpecialDetail(data){
+    return request({
+        url:"/api/v1/species/" + data.id ,
+        method:"GET",
+        headers:{
+            'Authorization': "m8ZN6xPH2t8xyrMsxFJfgUPb7fQz5tki-bf6GOzodgc",
+        }
+    })
+}
+

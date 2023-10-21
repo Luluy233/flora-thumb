@@ -23,7 +23,7 @@
 </template>
 
 <script setup>
-  import { defineProps, onMounted } from 'vue'
+  import { defineProps } from 'vue'
   
 
   const props = defineProps({
@@ -32,10 +32,7 @@
             required:true
         },
     });
-
-  onMounted(()=>{
-    console.log('this is basicinfo',props.data.value)
-  })
+  props;
 
 </script>
 

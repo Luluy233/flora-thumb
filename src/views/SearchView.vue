@@ -14,7 +14,7 @@
           <!-- 列 -->
           <el-col v-for="(plant, i) in row" :key="i" :span="6" style="max-width:none;margin-bottom:5px;"
             class="center-container">
-            <ResultCard :resultData="plant" >
+            <ResultCard :resultData="plant" @click="goDetail(plant)" >
             </ResultCard>
           </el-col>
         </el-row>
@@ -34,8 +34,9 @@
     import { ref, computed } from 'vue'
     import { useRoute } from "vue-router";
     import { onBeforeRouteUpdate } from "vue-router";
-    import { ElContainer, ElMain, ElRow, ElPagination } from 'element-plus'
+    import { ElContainer, ElMain, ElRow, ElPagination, ElMessage } from 'element-plus'
     import ResultCard from '@/components/search/ResultCard.vue'
+    import router from '@/router'
 
     const route = useRoute();
 
@@ -48,6 +49,7 @@
     const rowSize = 4;  //每行数量
     const key = ref(route.query.key);
 
+    // 分页获取搜索结果
     const getPage = () =>{
         isload.value = true;
         searchPlants({
@@ -59,8 +61,8 @@
             searchResult.value = resp;
             total.value = resp.meta.total;
         })
-        .catch(error=>{
-            console.log(error);
+        .catch(()=>{
+            ElMessage.error('获取搜索结果识别，请重试！')
         })
         .finally(()=>{
             isload.value = false;
@@ -73,28 +75,37 @@
 
     // 计算属性，计算couponList中图片对应的行；每行4列
     const plantRows = computed(() => {
-        const rows = [];  //二维数组，rows[i]存储第i行的店铺卡牌（4个）
-        const rowCount = pageSize / rowSize; //行数
+        const rows = [];  
+        const rowCount = pageSize / rowSize; 
         for (let i = 0; i < rowCount; i++) {
             rows.push(searchResult.value.data.slice(i * rowSize, (i + 1) * rowSize));
         }
         return rows;
     })
 
+    // 按页查看
     const handleCurrentChange = () =>{
         getPage();
     }
 
+    // 监听路由参数变化（搜索）
     onBeforeRouteUpdate((to, from) =>{
-        console.log(to);
         if(to.query.key !== from.query.key){
             key.value = to.query.key;
             console.log(key.value);
             currentPage.value = 1;
             getPage();
-
         }
     });
+
+    const goDetail = (info) =>{
+        router.push({
+            path: '/search/detail',
+            query:{
+                key: info.slug,
+            }
+        })
+    }
 
 </script>
 

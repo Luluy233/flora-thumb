@@ -4,6 +4,7 @@ import SearchView from "@/views/SearchView"
 import IdentifylView from "@/views/IdentifyView"
 import DetailView from "@/views/DetailView"
 import ProverbCard from "@/components/home/ProverbCard"
+import SearchDetailView from "@/views/SearchDetailView"
 
   const routes =
     [
@@ -31,6 +32,11 @@ import ProverbCard from "@/components/home/ProverbCard"
         path:'/proverb',
         name:'proverb',
         component: ProverbCard,
+      },
+      {
+        path:'/search/detail',
+        name:'search_detail',
+        component: SearchDetailView,
       }
     ]
 

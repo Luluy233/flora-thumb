@@ -35,7 +35,7 @@
 </template>
 
 <script setup>
-    import { ElContainer, ElMain, ElHeader } from 'element-plus';
+    import { ElContainer, ElMain, ElHeader, ElMessage } from 'element-plus';
     import { ArrowLeft } from '@element-plus/icons-vue'
     import { getPlantsInfo } from '@/utils/api.js'
     import { useRoute } from "vue-router";
@@ -57,11 +57,10 @@
         })
         .then(resp =>{
             detailData.value = resp.result;
-            console.log(detailData.value);
             showDetails.value = true;
         })
-        .catch(error =>{
-            console.log(error);
+        .catch(() =>{
+            ElMessage.error('获取植物信息失败，请重试！')
         })
     })
 

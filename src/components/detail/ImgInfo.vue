@@ -1,5 +1,4 @@
 <template>
-    <slot></slot>
     <div class="block text-center">
       <el-carousel height="300px" :autoplay="false">
         <el-carousel-item v-for="item in data.images" :key="item">
@@ -18,7 +17,7 @@
             required:true
         },
   })
-  console.log(props.data)
+  props;
 
 </script>
 

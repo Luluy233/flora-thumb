@@ -25,8 +25,8 @@
             required:true
         },
     });
+    props;
 
-    console.log(props);
 </script>
 
 <style scoped>

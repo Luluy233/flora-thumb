@@ -25,7 +25,6 @@
 
     const identifyPlants = (val) =>{
         resultInfo.value = val.content;
-        console.log('this is  home', resultInfo.value);
         showResult.value = true;
     }
     

@@ -29,8 +29,6 @@
                         {{ proverb }}
                     </div>
                 </div>
-
-
             </el-col>
         </el-row>
     </div>
@@ -52,17 +50,12 @@
     })
 
     const getProverb = () =>{
-        console.log(name.value);
         getFlower(name)
         .then(resp =>{
-            console.log(resp);
             proverb.value = "“ " + resp.result.flowerprov + " ”";
-            console.log(proverb.value);
         })
-        .catch(error =>{
+        .catch(() =>{
             proverb.value = "“ " + name.value + '还没留下箴言哦，换个花名试试吧~' + " ”";
-            console.log(proverb.value);
-            console.log(error);
         })
         .finally(()=>{
             showResult.value = true;
@@ -74,8 +67,6 @@
 
 <style scoped>
     .proverb-container{
-        /* background-color: gainsboro; */
-        /* height:70vh; */
         width:70vw;
         margin: 50px auto;
 
@@ -89,9 +80,7 @@
 
     .proverb-row{
         display: flex;
-        /* margin-right: 10%; */
         justify-content: space-between;
-        /* align-items: center; */
         padding:30px;
     }
 
