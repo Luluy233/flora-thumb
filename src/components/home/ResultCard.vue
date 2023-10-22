@@ -21,7 +21,7 @@
                                 <!-- 植物属 -->
                                 <div >{{ item.Genus }}</div>
                                 <!-- 相似度 -->
-                                <div>相似度：<span class="score">{{ item.Score }}%</span></div>
+                                <div><span class="score">{{ item.Score }}%</span></div>
                             </div>
                         </el-card>
                     </el-col>

@@ -34,10 +34,6 @@
         background-color: rgb(180, 219, 198);
     }
 
-    .aside{
-        /* border-right: 1px solid #6c8665; */
-    }
-
     .main-container{
         padding:50px;
     }

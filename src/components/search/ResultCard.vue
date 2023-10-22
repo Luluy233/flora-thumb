@@ -18,6 +18,9 @@
     import { defineProps } from 'vue'
     import { ElCard } from 'element-plus'
     import { Picture } from '@element-plus/icons-vue'
+    // import { translate } from '@/utils/api.js'
+
+
 
     const props = defineProps({
         resultData: {
@@ -25,6 +28,7 @@
             required:true
         },
     });
+
     props;
 
 </script>

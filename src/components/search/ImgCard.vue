@@ -3,7 +3,7 @@
         <el-row class="title"> 
             <PictureFilled style="width:32px;height:32px;margin-right:10px"></PictureFilled>图片    
         </el-row>
-        <div class="type-container" v-if="imageList.flower !== null">
+        <div class="type-container" v-if="imageList.flower">
             <el-row class="sub-title">花</el-row>
             <el-row>
                 <el-col :span="4"
@@ -14,7 +14,7 @@
                 </el-col>
             </el-row>
         </div>
-        <div class="type-container" v-if="imageList.fruit !== null">
+        <div class="type-container" v-if="imageList.fruit">
             <el-row class="sub-title">果</el-row>
             <el-row>
                 <el-col :span="4"
@@ -25,7 +25,7 @@
                 </el-col>
             </el-row>
         </div>
-        <div class="type-container" v-if="imageList.leaf !== null">
+        <div class="type-container" v-if="imageList.leaf">
             <el-row class="sub-title">叶</el-row>
             <el-row>
                 <el-col :span="4"
@@ -36,11 +36,11 @@
                 </el-col>
             </el-row>
         </div>
-        <div class="type-container" v-if="imageList.bark !== null">
+        <div class="type-container" v-if="imageList.bark">
             <el-row class="sub-title">树皮</el-row>
             <el-row>
                 <el-col :span="4"
-                    v-for="(item,index) in imageList.bark.slice(0,5)" :key="index" >
+                    v-for="(item,index) in imageList.bark.slice(0,4)" :key="index" >
                     <span class="img-container" >
                         <img class="img" :src="item.image_url" alt="图片未加载">
                     </span>
@@ -60,14 +60,13 @@
             required: true,
         }
     })
-    props;
+    console.log('imgCard',props.imageList)
 </script>
 
 <style scoped>
     .growth-container{
         width:70vw;
         margin:0 auto;
-        /* background-color: red; */
     }
 
     .type-container{

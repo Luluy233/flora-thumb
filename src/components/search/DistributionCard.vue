@@ -28,6 +28,9 @@
 <script setup>
     import { defineProps, onMounted, ref } from 'vue'
     import { LocationFilled, AddLocation, Location } from '@element-plus/icons-vue'
+    import { translate } from '@/utils/api.js'
+    import { ElMessage } from 'element-plus'
+    
 
     const nativeString = ref(null)
     const introducedString = ref(null)
@@ -41,12 +44,37 @@
 
     onMounted(()=>{
         if(props.data.native){
-            nativeString.value = ref(props.data.native.join('; '))
+            nativeString.value = props.data.native.join('; ')
+            translate({
+                key: nativeString.value,
+                from: 'auto',
+                to: 'zh',
+            })
+            .then(resp =>{
+                nativeString.value = resp.trans_result[0].dst;
+            })
+            .catch(()=>{
+                ElMessage.error('中译英失败，请重试！')
+            })
         }
         if(props.data.introduced){
-            introducedString.value = ref(props.data.introduced.join('; '))
+            introducedString.value = props.data.introduced.join('; ')
+            translate({
+                key: introducedString.value,
+                from: 'auto',
+                to: 'zh',
+            })
+            .then(resp =>{
+                introducedString.value = resp.trans_result[0].dst;
+            })
+            .catch(()=>{
+                ElMessage.error('中译英失败，请重试！')
+            })
         }
+
+
     })
+
 
 </script>
 

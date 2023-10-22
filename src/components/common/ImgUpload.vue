@@ -65,7 +65,7 @@ const uploadClass = computed(()=>{
 const handleChange = (File) =>{
   const isPNG = File.raw.type === 'image/png';  //文件类型png
   const isJPG = File.raw.type === 'image/jpg';  //文件类型png
-  const isLt500K = File.raw.size / 1024 / 1024 < 0.5;// 文件大小转换为MB单位,判断是否小于5MB
+  const isLt500K = File.raw.size / 1024 / 1024 < 0.5;// 文件大小转换为MB单位,判断是否小于500KB
 
   // 文件格式错误
   if(!isPNG && !isJPG) {

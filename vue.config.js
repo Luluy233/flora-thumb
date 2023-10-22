@@ -8,10 +8,21 @@ module.exports = defineConfig({
 module.exports = {
   devServer: {
       proxy: {
-          '/api': { // '/api'是代理标识，用于告诉node，url前面是/api的就是使用代理的
-              target: "https://trefle.io", //目标地址，一般是指后台服务器地址（只到域名即可）
-              changeOrigin: true, //是否跨域
+        '/api': { // '/api'是代理标识，用于告诉node，url前面是/api的就是使用代理的
+            target: "https://trefle.io", //目标地址，一般是指后台服务器地址（只到域名即可）
+            changeOrigin: true, //是否跨域
+            // pathRewrite: {  //重写路径（将带有api换成空字符串）
+            //   '^/api': ''
+            // }
+        },
+        '/baidu': { // 
+          target: "http://api.fanyi.baidu.com/api/trans/vip/fieldtranslate", //目标地址，一般是指后台服务器地址（只到域名即可）
+          changeOrigin: true, //是否跨域
+          pathRewrite: {  //重写路径（将带有/baidu换成空字符串）
+            '^/baidu': ''
           }
-      }
+        },
+
+    }
   }
 }

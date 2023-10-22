@@ -10,9 +10,9 @@
         </el-col>
         <!-- 信息 -->
         <el-col :span="16" class="basic">
-            <div class="name">{{ detailData.scientific_name }}</div>
-            <div class="description" v-if="detailData.common_name!==null">{{ detailData.common_name }}</div>
-            <div class="description" >{{ detailData.family }}科    {{ detailData.genus }}属</div>
+            <div class="name">{{  basic_data[0] }}</div>
+            <div class="description" v-if="detailData.common_name!==null">{{  basic_data[1] }}</div>
+            <div class="description" >{{  basic_data[2] }}科    {{  basic_data[3] }}属</div>
             <div class="author" >
                 <Avatar style="width:25px;height:25px;margin-bottom:-2px"></Avatar>
                 <span style="margin-left:5px"> {{ detailData.author }}</span>
@@ -36,11 +36,29 @@
     import NamesCard from '@/components/search/NamesCard.vue'
     import DistributionCard from '@/components/search/DistributionCard.vue';
     import ImgCard from '@/components/search/ImgCard.vue';
+    import { translate } from '@/utils/api.js'
+
 
     const route = useRoute();
     const detailData = ref(null);
-
     const isload = ref(false)
+    const basic_data = ref([]);
+
+    const en2zh = (data) =>{
+        translate({
+                key: data,
+                from: 'auto',
+                to: 'zh',
+            })
+            .then(resp =>{
+                for (const i in resp.trans_result){
+                    basic_data.value[i] = resp.trans_result[i].dst;
+                }
+            })
+            .catch(()=>{
+                ElMessage.error('中译英失败，请重试！')
+            })
+    }
 
     const getDetail = () =>{
         isload.value = true;
@@ -49,6 +67,10 @@
         })
         .then(resp=>{
             detailData.value = resp.data;
+            en2zh(detailData.value.scientific_name + "\n" 
+                    + detailData.value.common_name + "\n" 
+                    + detailData.value.family + "\n"
+                    + detailData.value.genus);
         })
         .catch(()=>{
             ElMessage.error('获取详情失败，请重试！')
