@@ -4,7 +4,7 @@
     <el-container class="search-container">
 
         <!-- 有结果 -->
-        <el-main v-if="searchResult" style="padding: 0" v-loading="isload">
+        <el-main v-if="showResult" style="padding: 0" v-loading="isload">
             <!-- 行 -->
             <el-row v-for="(row, index) in plantRows" :key="index" style="padding-top:20px;">
             <!-- 列 -->
@@ -42,7 +42,8 @@
 
     const route = useRoute();
 
-    const isload = ref(false)
+    const isload = ref(false);
+    const showResult = ref(false);
 
     const searchResult = ref(null); //返回结果
     const total = ref(0); //搜索总结果
@@ -87,6 +88,12 @@
             .then(resp=>{
                 searchResult.value = resp;
                 total.value = resp.meta.total;
+                if(resp.meta.total !== 0){
+                    showResult.value = true;
+                }
+                else{
+                    showResult.value = false;
+                }
                 trans_string.value = '';
                 for(const i in resp.data){
                     trans_string.value += (resp.data[i].scientific_name + '\n');
@@ -151,6 +158,7 @@
             .then(resp =>{
                 key.value = resp.trans_result[0].dst;
                 getPage(); //获取分页
+                console.log(resp);
             })
             .catch(()=>{
                 ElMessage.error('翻译失败！');
