@@ -29,7 +29,6 @@
 
         toBase64(formData)
         .then((base64String) => {
-            console.log(base64String);
             // 识别
             recognizePlants({
                 img_base64: base64String,
@@ -37,7 +36,6 @@
             .then(resp => {
                 val.fileList.splice(0, 1);//删除fileList的第一个元素
                 ImgUploadRef.value.$refs.uploadRef.clearFiles();
-                console.log(resp);
 
                 // 传结果给HomeView
                 let param ={

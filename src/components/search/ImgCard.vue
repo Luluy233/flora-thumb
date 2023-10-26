@@ -60,7 +60,7 @@
             required: true,
         }
     })
-    console.log('imgCard',props.imageList)
+    props;
 </script>
 
 <style scoped>

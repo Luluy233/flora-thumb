@@ -61,7 +61,6 @@
             to: 'zh',
         })
         .then(resp=>{
-            console.log(resp);
             // 分割结果
             for (const i in searchResult.value.data){
                     basic_info.value[i]= {
@@ -72,8 +71,8 @@
                     }
                 }
         })
-        .catch(err=>{
-            console.log(err);   
+        .catch(()=>{
+            ElMessage.error('翻译失败！')
         })
     }
     
@@ -86,7 +85,6 @@
             page: currentPage.value,
         })
             .then(resp=>{
-                console.log(resp);
                 searchResult.value = resp;
                 total.value = resp.meta.total;
                 trans_string.value = '';
@@ -114,12 +112,10 @@
         })
         .then(resp =>{
             key.value = resp.trans_result[0].dst;
-            console.log(resp);
             getPage(); //获取分页
         })
-        .catch(err=>{
+        .catch(()=>{
             ElMessage.error('翻译失败！');
-            console.log('1',err)
         })
         .finally(()=>{
             isload.value = false;   
@@ -146,7 +142,6 @@
         if(to.query.key !== from.query.key){
             isload.value = true;
             key.value = to.query.key;
-            console.log(key.value);
             currentPage.value = 1;
             translate({
                 key: key.value,
@@ -155,7 +150,6 @@
             })
             .then(resp =>{
                 key.value = resp.trans_result[0].dst;
-                console.log(resp);
                 getPage(); //获取分页
             })
             .catch(()=>{
