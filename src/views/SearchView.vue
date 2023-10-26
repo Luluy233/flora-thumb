@@ -1,10 +1,10 @@
 <!-- 搜索界面 -->
 <template>
     <!-- 搜索结果显示栏 -->
-    <el-container class="search-container" v-loading="isload">
+    <el-container class="search-container">
 
         <!-- 有结果 -->
-        <el-main v-if="searchResult" style="padding: 0" >
+        <el-main v-if="searchResult" style="padding: 0" v-loading="isload">
             <!-- 行 -->
             <el-row v-for="(row, index) in plantRows" :key="index" style="padding-top:20px;">
             <!-- 列 -->
